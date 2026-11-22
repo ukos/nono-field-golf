@@ -323,6 +323,13 @@
 - liteの地方→遠景対応（liteのREGIONS定義が正本）から、コースへ割当：1草原=far_meadow、2都会早朝=far_mountains、3林=far_forest、4海岸線=far_sea、5打ち降ろし=far_valley、6高原=far_highland、7砂浜=far_sea、8山の上=far_mountains、9都会深夜=far_twilight（減光 bgDim 0x4a5878）、10機械遺跡=far_ruins、11ジャングル=far_flower、12雪山=far_snow、13砂漠=far_desert、14大渓谷=far_valley、15竹林=far_bamboo、16火山=far_volcano、17湿原=far_marsh、18黄昏=far_twilight。
 - 実装：画像14枚を bg/ にコピーし、コースを囲む円筒（BackSide、fog無効、上端はアルファで空へフェード）に5回繰り返しで貼る。円筒は地面メッシュの外側に置くため視界を塞がない。読込失敗時は opacity 0 のまま（白壁にならない）。
 
+## 変更履歴：水面エフェクト・風・雨（天候システム）（v0.26.0、2026-11-23）
+- ユーザー指示：水面にエフェクト／コースに風（追い風・向かい風・横風・突風、向きと強さで飛距離に影響）／雨（小雨・大雨・嵐＝風と複合、視界悪化、よく転がる、インパクトゾーン短縮）。3件とも実装。
+- 天候はホールごとに抽選（晴れ55%／小雨20%／大雨15%／嵐10%）。天候ピルをスピン選択の下に表示（☀晴れ等のアイコン＋風向き矢印 ※エイム基準＋追い風／向かい風／横風＋風速。突風時は数値がうねる）。
+- 風：向きと強さ（m/s）を持つ。ショット時に追い／向かい成分で飛距離を補正（×0.72〜1.3）、飛行中は抗力でボールを風に流し、突風は正弦のうねりで強さが変動。実測（7Iベスト、検証環境）：無風123.5m／追い風12m/s→158.4m／向かい風12m/s→98.7m／横風12m/s→横に+5.1m流れる。
+- 雨：雨粒パーティクル（カメラ周辺に降り続け、風で流れる）。視界はフォグを縮小（小雨×0.75／大雨×0.5／嵐×0.35）し、空・太陽・遠景も暗転。転がりは ×1.25／×1.45／×1.6。ベストゾーンは ×0.8／×0.65／×0.5（7I：12%→9.6%→7.8%→6%）。嵐は風8〜14m/s＋突風つき。
+- 水面：池・海・オアシス・川などの水面マテリアルに波紋テクスチャ（Canvas生成）を貼り、オフセットを流してアニメーション。コース切替で張り直し。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
