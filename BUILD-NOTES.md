@@ -232,6 +232,11 @@
 - コース8「山の上」Par5・450m：麓（0m）から山頂（38m、クレーター跡の平坦なグリーン）まで smoothstep の登り。地面は gtex_rocky、上部は岩肌の色。山頂に鳥居。1W の登り打ちが平地より大幅に短くなることを確認。
 - 修正：登りホールでエイムカメラが上を向きすぎてキャラが画角外に出た。注視点の上向きを約9°までに抑え、登りではカメラを少し引くようにした。
 
+## 変更履歴：コース9「都会（深夜）」（v0.16.0、2026-11-22）
+- Par4・340m。道路が直角に曲がる（第1レグ190m＋第2レグ150m、カップは (-150, -190)）。loadCourse のカップ位置をコース別に指定できるようにした（cupX/cupZ）。
+- 夜景：空は濃紺、月明かり（太陽光を青く弱く）、半球光も 0.5 に。ビルは暗色、街灯（ポール＋発光球、当たり判定あり）を両レグに配置。
+- 車の往来：タクシー3台・トラック2台が両レグを走り、当たり判定（箱コライダー）も毎フレーム同期して動く。当たると跳ね返る。車の台数・移動・地面種別（両レグ asphalt／路外 rough）を検証済み。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
