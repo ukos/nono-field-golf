@@ -288,6 +288,9 @@
 - ユーザー指示：ボールにスピンをかけるか、どちら向きか（トップスピン／ニュートラル／バックスピン）を選択できるようにする。ニュートラル以外を選ぶとベストショット領域が半分になる。→ ゲージ下に3択のスピン選択を追加（設定として保存）。トップ＝打ち出し角−3°・転がり×1.45、バック＝打ち出し角+4°・転がり×0.4。ベスト帯は表示・判定とも半分になる。パターではスピン無効（ニュートラル固定）。
 - ユーザー指示：ドローンビュー追加、ドローンを飛ばしてコースを確認できるように。→ 「ドローン確認」ボタンでティーからカップまでコースライン上空（地形+24m）を飛行（直角コースと最終ホールは経由点つき）。タップで終了し通常カメラへ戻る。
 
+## 変更履歴：スピン／ドローンのボタンが押せない不具合を修正（v0.23.1、2026-11-22）
+- 実機報告：ボタンは表示されるが押しても反応なし。原因は #ui の pointer-events:none に対する auto 指定リストに #droneBtn と #spinCtl が入っていなかったこと（タップが素通りしていた）。リストに追加し、実座標タップで動作確認済み。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
