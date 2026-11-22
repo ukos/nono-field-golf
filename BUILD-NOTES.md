@@ -121,6 +121,12 @@
   - `35_putt_hold.png` グリーン上で PT を1.5秒押し続けてもアドレスのまま（テークバックへ進まない）。
   - `36_putt_impact.png` 離した直後：インパクト絵でボールが転がり始めている（フォローなし）。
 
+## 変更履歴：キャッシュ対策（v0.6.1、2026-11-22）
+- 実機（Muse 内ブラウザ）で v0.6 公開後も古いページが表示され続けたため、ページ側に対策を入れた：
+  - 起動時に `version.txt` をキャッシュなしで読み、ページ内蔵の版（PAGE_VER）と違えば `?upd=<版>` 付きの新しい URL で開き直す（1回だけ）。公開のたびに PAGE_VER と version.txt を一緒に上げる運用にする。
+  - 画像9点（golfer／flag／スイング7枚）の読み込み URL に版クエリ（`?v=061`）を付け、画像キャッシュも更新時に切り替わるようにした。
+- 検証：ローカルでリダイレクトループなし・エラー0件を確認。古いページ（対策入り前）だけは自動では直らないため、初回だけ新しい URL で開く必要がある。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
