@@ -166,6 +166,10 @@
 - 「TAP TO START」の点滅表示とバージョン表記を付け、タップでフェードアウトしてゲーム画面へ移る。そのタップがそのまま BGM・風の音の開始合図になる（自動再生制限と相性がよい）。
 - 検証（puppeteer）：エラー0件。ロゴ画面の表示・画像読み込み、タップ後の非表示（操作を通す）と BGM 開始を確認。
 
+## 変更履歴：ロゴ画面のサイズ感の修正（v0.11.1、2026-11-22、ユーザー報告）
+- 実機でロゴ画面が拡大表示され、ロゴと文字が左右にはみ出すケースがあった（ブラウザ側で拡大表示が保持されていると、レイアウト幅基準の指定では収まらない）。対策として、ロゴ画面と UI・キャンバスの配置を「実際に見えている領域（visualViewport）」の幅とオフセットに追随させた：onResize で --appw（可視幅）を設定し、#game／#ui／#splash の left／top／width を可視領域に合わせ、ロゴ画像の幅も可視幅の76%を上限にした。visualViewport の scroll イベントでも再計算する。あわせて text-size-adjust:100% を指定。
+- 通常表示（拡大なし）では従来と同一のレイアウトになることを検証で確認（エラー0件）。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
