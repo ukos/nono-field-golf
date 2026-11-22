@@ -300,6 +300,9 @@
 ## 変更履歴：コースマップを左側中間にスケルトン表示（v0.24.1、2026-11-22）
 - ユーザー指示：コースマップも左側の中間位置くらいにスケルトン表示してほしい。→ 左中央に半透明のミニマップ（コースライン／水域／グリーン／カップ／ティー／現在ボールを描画、約8フレームごとに更新）。範囲はドローン経路＋水域から算出。実装時の注意：buildCourse(0) は ball 生成より前に走るため、宣言とボール参照は前方に置くこと（TDZで2回起動失敗した）。
 
+## 変更履歴：グリーンまでの距離を表示（v0.24.2、2026-11-22）
+- ユーザー指示：グリーンまでの距離も表示して。→ 上部バーに「残り（カップまで）」と並べて「グリーンまで ○○ m」を追加。グリーンの形（6種）に沿って、カップ方向の直線で縁に触れる距離を算出。グリーン上では0。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
