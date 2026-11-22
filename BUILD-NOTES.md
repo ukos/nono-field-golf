@@ -303,6 +303,9 @@
 ## 変更履歴：グリーンまでの距離を表示（v0.24.2、2026-11-22）
 - ユーザー指示：グリーンまでの距離も表示して。→ 上部バーに「残り（カップまで）」と並べて「グリーンまで ○○ m」を追加。グリーンの形（6種）に沿って、カップ方向の直線で縁に触れる距離を算出。グリーン上では0。
 
+## 変更履歴：上部UIの配置見直し（v0.24.3、2026-11-22）
+- 実機報告：コース情報（左上）とスイングバー・設定・クラブ選択が被っている。→ コース情報のサブ行を2行に分割（残り／グリーンまで＋ライ）し幅も制限。ゲージはコース情報とCLUBの下（top 86px・幅42vw）へ、スピンはその下（162px）へ、設定84px／ドローン確認122pxに調整。390×844と844×390の両方で全UI要素の重なりゼロを実測確認。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
