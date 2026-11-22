@@ -183,6 +183,10 @@
 - 対応は画像側のピクセル編集のみ（再生成なし、元絵は assets-src/swing_follow_before_v0114.png に保管）：全体を左へ 70px 平行移動し、腰（y=1750）から上を頭頂（y=800）で最大 26px まで漸進的に左へずらすシアーで上半身をほんの少し左に傾けた。足元中心 1177→1107。人物の高さ・割合は不変なので FOLLOW_H／FOLLOW_Y の較正は据え置き。
 - 検証：スクリーンキャストでフォローの瞬間を捉え、ボール（前方に小さく見える）が体に隠れず、上半身の傾き・クラブの接続も問題ないことを確認。エラー0件。
 
+## 変更履歴：フォローの上半身を脚を軸にもう少し左へ傾ける（v0.11.5、2026-11-22、ユーザー指示）
+- v0.11.4 の傾きでは足りず、「脚を軸に」もう少し傾けた。ピクセル編集のみ（v0.11.4 の状態は assets-src/swing_follow_before_v0115.png に保管）：軸を脚の付け根（y=1850）に下げ、そこから上を頭頂（y=750）で最大 +34px まで漸進的に左へずらすシアーを追加。脚・足元は不動。クラブヘッドはフレーム内に収まり、シャフトの接続も維持。
+- 検証：前後比較ストリップとスクリーンキャストのフォロー表示で確認。エラー0件。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
