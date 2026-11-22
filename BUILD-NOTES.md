@@ -318,6 +318,11 @@
 ## 変更履歴：スイングバーを設定ボタンに並べる（v0.24.7、2026-11-22）
 - ユーザー指示：スイングバーは設定に並べろ。→ ゲージのバーを設定ボタン（コース情報の下、top 90px）と同じ高さに配置（バー中心≒ボタン中心、top 95px）。スピンはバーから38px空けた位置（155px）を維持。
 
+## 変更履歴：コース背景にNONO HD-2D liteの地方遠景を設定（v0.25.0、2026-11-22）
+- ユーザー指示：各コースの背景はNONO HD-2D liteの各地方の背景をコピーして設定（割当は任せた）。ついでに判明：画面を覆っていたのは全コース共通の遠景の山（5角錐＝ピラミッド型）が長いコースのグリーン付近に被っていたもの。円錐の山は撤去。
+- liteの地方→遠景対応（liteのREGIONS定義が正本）から、コースへ割当：1草原=far_meadow、2都会早朝=far_mountains、3林=far_forest、4海岸線=far_sea、5打ち降ろし=far_valley、6高原=far_highland、7砂浜=far_sea、8山の上=far_mountains、9都会深夜=far_twilight（減光 bgDim 0x4a5878）、10機械遺跡=far_ruins、11ジャングル=far_flower、12雪山=far_snow、13砂漠=far_desert、14大渓谷=far_valley、15竹林=far_bamboo、16火山=far_volcano、17湿原=far_marsh、18黄昏=far_twilight。
+- 実装：画像14枚を bg/ にコピーし、コースを囲む円筒（BackSide、fog無効、上端はアルファで空へフェード）に5回繰り返しで貼る。円筒は地面メッシュの外側に置くため視界を塞がない。読込失敗時は opacity 0 のまま（白壁にならない）。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
