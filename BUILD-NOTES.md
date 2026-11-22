@@ -154,8 +154,15 @@
 - **操作系が見えないケースへの対策**（ユーザー報告）：UI を「実際に見えている領域（visualViewport）」の高さに合わせるコンテナ（#ui）に移し、キャンバスも同じ寸法で再計算するようにした。ブラウザのツールバーの出入りでレイアウト高と可視高がずれても、スティック／SHOT／CLUB／設定が画面外に落ちない。下部操作にはセーフエリア分の余白も追加。
 - 検証（puppeteer）：エラー0件。地面判定（5種）と、同じ 7I でもフェアウェイ着地 148.4m に対しラフ着地 139.4m と転がりが短くなることを確認（絶対値は検証環境の粗い刻みによる既存の上振れで、v0.8 でも同値）。縦860／縦600／横向きの3条件で全操作系が可視領域内にあることと、SHOT のタップで実際に打てることを確認。
 
+## 変更履歴：サウンド一式とアプリアイコン（v0.10、2026-11-22、ユーザー指示）
+- **BGM**：「のんべんだらりではなく爽快なもの、パラパラで」との指示で、生成音のループを新規実装。明るい長調（C→G→Am→F）、テンポ138、プラック音色（マリンバ風）のパラパラした主旋律＋軽いベース＋ハット／キック。音声ファイルは使わず WebAudio で合成。最初のタップで開始（自動再生制限対策）。
+- **環境音・風切り**：風の音（サラサラ）を常時うっすら再生（フィルターと音量を LFO でゆっくりうねらせる）。スイングを離した瞬間に風切り音（シュパーン）。飛行中はボールの速さに連動する風切り音が追いかける。
+- **地面別の音**：着地音を地面で変えた（フェアウェイ＝カツッ／グリーン＝トスッ／ラフ＝ボフッ＋草ずれ／砂＝ザシュッ、水は従来の池ポチャ）。跳ねの着地ごとに小さく追随。転がり音も地面別（グリーンは滑らかで一番長く、砂はほぼ無音）。パットの転がり音も小さめに付く。設定のサウンド ON/OFF は新規の音すべてに効く（バス経由）。
+- **アプリアイコン**（ユーザー指定）：ユーザーのゲームロゴから icon-512／192／180（apple-touch-icon）／favicon-32 を生成し、manifest（アプリ名 FIELD GOLF HD-2D、standalone表示）と一緒に設定。ホーム画面に追加するとこのアイコンで起動できる。
+- 検証（puppeteer）：エラー0件。タップ後に AudioContext 起動・BGM スケジューラ進行・風の音開始を確認。ショット中は飛行の風切り→着地→転がり音の開始と停止を確認。アイコン・マニフェストの読み込みも 200 で確認。
+
 ## 公開時に必要なファイル
-- `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
+- `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
 
 ## ローカルでの開き方
