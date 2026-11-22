@@ -192,6 +192,10 @@
 - 対応はピクセル編集のみ（v0.11.5 の状態は assets-src/swing_follow_before_v0116.png に保管）：右脚だけに局所ワープ。y=2060（ショーツ裾の下）で 0、膝 y=2170 で最大 −80px、それ以下（すね・靴）は −80 のまま平行移動。x ゲート 1175→1225 の smoothstep で軸脚（x≦1169）には触れていない。ショーツ・靴の形・足裏の見え方は不変。
 - 検証：脚まわり／全身の前後比較で膝の収まりを確認し、スクリーンキャストのフォロー表示でも問題なし。エラー0件。
 
+## 変更履歴：フォローの身体全体を足元を軸に少し左へ傾ける（v0.11.7、2026-11-22、ユーザー指示・事前事後で承認）
+- ピクセル編集のみ（v0.11.6 の状態は assets-src/swing_follow_before_v0117.png に保管）：足元（y=2751）を軸に 0、頭頂（y=760）で最大 −30px、それより上は一律 −30px の漸進シアーで身体全体を少し左へ傾けた。足の位置は不変。クラブヘッドは左端ぎりぎりだが欠けなし（これ以上傾ける場合はキャンバス側の調整が必要）。
+- 検証：事前事後ストリップをユーザーが確認して承認。スクリーンキャストのフォロー表示でも問題なし。エラー0件。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
