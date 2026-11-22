@@ -161,8 +161,13 @@
 - **アプリアイコン**（ユーザー指定）：ユーザーのゲームロゴから icon-512／192／180（apple-touch-icon）／favicon-32 を生成し、manifest（アプリ名 FIELD GOLF HD-2D、standalone表示）と一緒に設定。ホーム画面に追加するとこのアイコンで起動できる。
 - 検証（puppeteer）：エラー0件。タップ後に AudioContext 起動・BGM スケジューラ進行・風の音開始を確認。ショット中は飛行の風切り→着地→転がり音の開始と停止を確認。アイコン・マニフェストの読み込みも 200 で確認。
 
+## 変更履歴：ロゴ画面から開始（v0.11、2026-11-22、ユーザー指示）
+- 起動直後はゲーム画面ではなく、白背景にユーザーのロゴを表示するロゴ画面（スプラッシュ）から始まるようにした。ロゴ画像は logo.jpg（ロゴ原画から切り出し、900px幅に軽量化）。
+- 「TAP TO START」の点滅表示とバージョン表記を付け、タップでフェードアウトしてゲーム画面へ移る。そのタップがそのまま BGM・風の音の開始合図になる（自動再生制限と相性がよい）。
+- 検証（puppeteer）：エラー0件。ロゴ画面の表示・画像読み込み、タップ後の非表示（操作を通す）と BGM 開始を確認。
+
 ## 公開時に必要なファイル
-- `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
+- `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
 
 ## ローカルでの開き方
