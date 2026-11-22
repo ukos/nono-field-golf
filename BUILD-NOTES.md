@@ -187,6 +187,11 @@
 - v0.11.4 の傾きでは足りず、「脚を軸に」もう少し傾けた。ピクセル編集のみ（v0.11.4 の状態は assets-src/swing_follow_before_v0115.png に保管）：軸を脚の付け根（y=1850）に下げ、そこから上を頭頂（y=750）で最大 +34px まで漸進的に左へずらすシアーを追加。脚・足元は不動。クラブヘッドはフレーム内に収まり、シャフトの接続も維持。
 - 検証：前後比較ストリップとスクリーンキャストのフォロー表示で確認。エラー0件。
 
+## 変更履歴：フォローの右脚を局所ワープで軸脚側へ寄せる（v0.11.6、2026-11-22、ユーザー指示・案A採用）
+- 「右脚が前に突っ込むように見える」との指摘。拡大診断：右脚は太ももが斜め前に出て膝が最前面に突き出していた（本来のフォローは右膝が下向きに軸脚へ寄り、体の後ろでつま先立ちに収まる）。
+- 対応はピクセル編集のみ（v0.11.5 の状態は assets-src/swing_follow_before_v0116.png に保管）：右脚だけに局所ワープ。y=2060（ショーツ裾の下）で 0、膝 y=2170 で最大 −80px、それ以下（すね・靴）は −80 のまま平行移動。x ゲート 1175→1225 の smoothstep で軸脚（x≦1169）には触れていない。ショーツ・靴の形・足裏の見え方は不変。
+- 検証：脚まわり／全身の前後比較で膝の収まりを確認し、スクリーンキャストのフォロー表示でも問題なし。エラー0件。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
