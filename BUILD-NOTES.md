@@ -196,6 +196,11 @@
 - ピクセル編集のみ（v0.11.6 の状態は assets-src/swing_follow_before_v0117.png に保管）：足元（y=2751）を軸に 0、頭頂（y=760）で最大 −30px、それより上は一律 −30px の漸進シアーで身体全体を少し左へ傾けた。足の位置は不変。クラブヘッドは左端ぎりぎりだが欠けなし（これ以上傾ける場合はキャンバス側の調整が必要）。
 - 検証：事前事後ストリップをユーザーが確認して承認。スクリーンキャストのフォロー表示でも問題なし。エラー0件。
 
+## 変更履歴：フォローを足元を軸に10度左へ回転（v0.11.8、2026-11-22、ユーザー指示・事前事後で承認）
+- 「もうちょい10度左に傾けて」との指示で、シアーではなく回転に切り替えた。ピクセル編集のみ（v0.11.7 の状態は assets-src/swing_follow_before_v0118.png に保管）：キャンバスを横に拡張（1836→2836px）し、足元（軸脚の接地点）を支点に全体を10度左へ回転（BICUBIC）。クラブヘッドは左端から302pxの位置に収まった。
+- 回転で人物の縦スパンが 1990→2020px に変わったため、表示較正を再計算：FOLLOW_H 1.747→1.721、FOLLOW_Y 0.872→0.868。
+- 検証：事前事後ストリップをユーザーが確認して承認。ゲーム内でも足元がアドレスと同じ地面ラインに揃い、大きさが合うことを確認。エラー0件。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
