@@ -247,6 +247,9 @@
 - コース15「霞の竹林」Par4・290m：竹の株（新ヘルパー bamboo、コライダー99個）＋霧（コース別フォグ 40〜280m を buildCourse に追加）。
 - 検証（ローカル）：6コースとも地面種別・地形高・コライダー数とスクリーンショットを確認。エラー0件。
 
+## 変更履歴：フォロー保持 0.28→0.18秒（v0.17.1、2026-11-22）
+- ユーザー指摘「スイングからの場面切り替えのテンポ、爽快感の問題」を受けて調整。フォロースルーの保持を 0.28秒 → 0.18秒に短縮（インパクト 0.05秒保持の後、0.23秒でフィニッシュへ）。カメラ切り替え開始（camDelay 0.83秒）は今回は変更なし。体感はユーザーの実機確認待ち。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
