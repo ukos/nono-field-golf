@@ -272,6 +272,10 @@
 - ユーザー指示：都会2コースの地面はアスファルト風のテクスチャに。→ アスファルトテクスチャを新規生成（tex/gtex_asphalt.png、512px、骨材の粒＋ムラ＋かすかなひび、タイリング継ぎ目なし）。道路は濃く、歩道側は素の明るさでコンクリート風に tint 分け。石床テクスチャは両コースとも廃止。
 - ユーザー指示：ビルもグレーかライトブルー多めで。→ 早朝のパレットをグレー／ライトブルー系に差し替え。深夜も同系色を夜向けに落として採用し、環境光（hemi 0.5→0.68）を少し上げて真っ黒な壁にならないようにした。
 
+## 変更履歴：海岸線の高低差10m＋クラブリストを7件表示でスクロール（v0.21.0、2026-11-22）
+- ユーザー指示（実機スクショつき）：海岸線の砂浜とフェアウェイの高低差は5m→10m。→ heightCoast の段差を 10m にし、砂浜・海の平面も −9.97／−9.86 に追随。実測で砂浜 gh = −10 を確認。
+- ユーザー指示：横向き画面だと選べないクラブがあるため、選択リストの長さをクラブ7つまでにしてスクロールできるように。→ #clubItems の高さを renderClubList が行の高さ実測×7で設定（向き変更時も再計算）。開いた時は選択中のクラブが見える位置まで自動スクロール。横向き検証：7件ちょうど表示・スクロールで最下段の PT まで選択可。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
