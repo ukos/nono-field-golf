@@ -260,6 +260,9 @@
 - コース進行（ユーザー指示）：コース1から順に進む。ホールアウト（カップイン／ギブアップ）で次のコースが解放され（localStorage に保存）、結果画面に「次のコースへ ▶」ボタンを追加。設定のコース選択は解放済みコースだけ選べる（未開放は無効表示）。最終コースの結果には「全コース制覇！」を表示。
 - オープニング（ユーザー指示）：コース開始時（起動直後とコース切り替え時）に、コース中心を1周する全景カメラ（4.2秒、徐々に寄りながら最後は通常のエイムカメラへ滑らかに合流）。画面タップ／スティック／SHOT でスキップ可（SHOT は打たずにスキップ）。同じホールのやり直しでは流れない。
 
+## 変更履歴：オープニングカメラにドローン風の上下動（v0.19.1、2026-11-22）
+- ユーザー指示：周回しながら上下にも動くドローンカメラに。高度に sin 波（1周で2回上下、振幅 ±38%）を重ね、全体は徐々に下がり、終盤は波を消して通常カメラへ合流。camY の実測で上下動を確認。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
