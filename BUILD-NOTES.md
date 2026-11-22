@@ -291,6 +291,9 @@
 ## 変更履歴：スピン／ドローンのボタンが押せない不具合を修正（v0.23.1、2026-11-22）
 - 実機報告：ボタンは表示されるが押しても反応なし。原因は #ui の pointer-events:none に対する auto 指定リストに #droneBtn と #spinCtl が入っていなかったこと（タップが素通りしていた）。リストに追加し、実座標タップで動作確認済み。
 
+## 変更履歴：打ち降ろしのグリーンを10m奥へ（v0.23.2、2026-11-22）
+- ユーザー指示：打ち降ろしコースのグリーンはもう10メートル遠くに設置。→ ホール長 50m → 60m（カップ位置のみ変更。崖・池・小島はカップ連動のため自動で追随）。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
