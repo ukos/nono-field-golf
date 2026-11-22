@@ -174,6 +174,10 @@
 - 実機でスティックと SHOT ボタンが大きく見えるとの指摘で、両方を 50% に縮小した。縦向き：スティック 118→59px（ノブ 52→26px）、SHOT 104→52px（文字 19→11px）。横向き：スティック 92→46px（ノブ 42→21px）、SHOT 80→40px（文字 16→10px）。スティックの可動域は実寸から算出しているため自動で追随する。
 - 検証（puppeteer）：エラー0件。縦・横とも実測で 50% を確認し、ドラッグでノブが動き、SHOT の長押し→離して発射まで動作確認。
 
+## 変更履歴：スティックとSHOTボタンを元のサイズへ戻す（v0.11.3、2026-11-22、ユーザー指示）
+- v0.11.2 の 50% 縮小は実機で小さすぎたため、元のサイズに復帰した（縦：スティック 118px／ノブ 52px／SHOT 104px、横：92px／42px／80px）。大きく見えた件はブラウザ側の拡大表示（表示バグ）側の問題で、v0.11.1 の「見えている範囲に追随させる」対策はそのまま残してある。
+- 検証（puppeteer）：エラー0件。縦・横とも元のサイズを実測し、SHOT の長押し→発射を確認。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
