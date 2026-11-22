@@ -170,6 +170,10 @@
 - 実機でロゴ画面が拡大表示され、ロゴと文字が左右にはみ出すケースがあった（ブラウザ側で拡大表示が保持されていると、レイアウト幅基準の指定では収まらない）。対策として、ロゴ画面と UI・キャンバスの配置を「実際に見えている領域（visualViewport）」の幅とオフセットに追随させた：onResize で --appw（可視幅）を設定し、#game／#ui／#splash の left／top／width を可視領域に合わせ、ロゴ画像の幅も可視幅の76%を上限にした。visualViewport の scroll イベントでも再計算する。あわせて text-size-adjust:100% を指定。
 - 通常表示（拡大なし）では従来と同一のレイアウトになることを検証で確認（エラー0件）。
 
+## 変更履歴：スティックとSHOTボタンを50%に（v0.11.2、2026-11-22、ユーザー指示）
+- 実機でスティックと SHOT ボタンが大きく見えるとの指摘で、両方を 50% に縮小した。縦向き：スティック 118→59px（ノブ 52→26px）、SHOT 104→52px（文字 19→11px）。横向き：スティック 92→46px（ノブ 42→21px）、SHOT 80→40px（文字 16→10px）。スティックの可動域は実寸から算出しているため自動で追随する。
+- 検証（puppeteer）：エラー0件。縦・横とも実測で 50% を確認し、ドラッグでノブが動き、SHOT の長押し→離して発射まで動作確認。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
