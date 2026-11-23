@@ -335,6 +335,11 @@
 - 狙いは以前ユーザーが指摘した「フォローがあると一瞬もたつく」感の切り分け。カメラ移行のタイミング（camDelay 0.83秒）は不変。
 - 検証：スイングの連続フレーム撮影で、アドレス→トップ→フィニッシュ直行を確認（フォローのコマは出ない）。エラー0件。
 
+## 変更履歴：フォロー画像無しでFix（v0.28.0、2026-11-23）
+- ユーザー「バッチリです。フォロー画像無しでFixします」— v0.27.0 の試行を正式確定。
+- 正式化に伴う整理：フォロー絵（swing_follow.png）の読み込み自体をやめた（最大級のテクスチャだったため読み込みも軽くなる）。較正定数 FOLLOW_H/FOLLOW_Y と texFollow も撤去。絵のファイル自体はリポジトリに残す。
+- 仕様書も v4.3 に更新（§5 テンポ、§6 ポーズ一覧）。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
