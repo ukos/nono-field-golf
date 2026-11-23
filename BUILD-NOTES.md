@@ -354,6 +354,14 @@
 - 検証：移行（旧[1W,4I,7I,PT]→名で正しく対応）、ベスト100回目で Big Bertha 解放＋バッグ追加、伝説欄5行の表示、全クラブのベスト幅、パーシモンの実射。エラー0件。
 - 仕様書 v4.4 に反映（§4）。
 
+## 変更履歴：バッグ上限 PT含め14本（v0.30.0、2026-11-23）
+- ユーザー指示「PTを含め14本以上持てないようにして」。バッグ上限 BAG_MAX=14 を導入。
+- 初期バッグは従来の14本（1W・3W・5W・UT・4I〜9I・PW・AW・SW・PT）。上限超過の旧保存は従来14本を優先して14本に切り詰める。
+- 設定画面：満杯時は追加タップをブロックし、注記に警告（赤字）と本数カウンタ（現在 x/14 本）を表示。伝説のクラブの「バッグに入れる」も同じ上限。
+- 伝説の入手時：バッグに空きがあれば自動追加、満杯なら入手だけ記録し「設定で入れ替え可能」と案内（checkUnlocks が {name, added} を返す形に変更、legendMsg で文面を統一）。
+- 検証：20本保存→14本切り詰め、満杯時の追加ブロックと警告、外してからの追加、満杯時の伝説入手（added:false）。エラー0件。
+- 仕様書 v4.5 に反映（§4）。
+
 ## 公開時に必要なファイル
 - `index.html`、`golfer.png`、`flag.png`、`swing_address.png`、`swing_takeback.png`、`swing_back.png`、`swing_down.png`、`swing_impact.png`、`swing_follow.png`、`swing_finish.png` の10点に、v0.10 から `icon-512.png`、`icon-192.png`、`icon-180.png`、`favicon-32.png`、`manifest.webmanifest`、`version.txt` と `logo.jpg`（v0.11〜）を加えた点（公開リポジトリ ukos/nono-field-golf-playground のルートに同列で配置。index.html は相対パスで参照）。
 - `shots/` と本メモは公開不要（ソースリポジトリ ukos/nono-field-golf 側に置く想定）。
